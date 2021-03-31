@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Regions List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <th:block th:if="${#lists.isEmpty(regions)}">
+        <h3>No employee</h3>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(regions)}">
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Regions ID</th>
+                    <th>Regions Name</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="region : ${regions}">
+                    <td th:text="${region.regions_id}"></td>
+                    <td th:text="${region.regions_name}"></td>
+                   
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+
+
+
+</body>
+</html>
