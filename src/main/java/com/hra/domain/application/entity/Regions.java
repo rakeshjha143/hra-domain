@@ -29,5 +29,6 @@ public class Regions {
 	  
 	  @Column(name = "REGION_NAME", nullable = false)
 	  private String regions_name;
-
+   
+	
 }

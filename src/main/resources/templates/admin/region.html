@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Regions List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
 <body>
+<nav th:replace="admin/layout :: header"></nav>
+
+
+
+<div class="container main-content list">
+
   <th:block th:if="${#lists.isEmpty(regions)}">
         <h3>No employee</h3>
     </th:block>
@@ -33,8 +32,9 @@
             </table>
         </div>
     </th:block>
+</div>
 
 
-
+<footer th:replace="admin/layout :: footer"></footer>
 </body>
 </html>

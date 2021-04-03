@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
+<body>
+<nav th:replace="admin/layout :: header"></nav>
+
+  <th:block th:if="${#lists.isEmpty(jobslist)}">
+        <h3>No Jobs</h3>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(jobslist)}">
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>JOBS ID</th>
+                    <th>JOBS CODE</th>
+                    <th>JOBS TITLE</th>
+                    <th>MINMUM SALARY</th>
+                    <th>MAXIMUM SALARY</th>
+                   
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="jobs : ${jobslist}">
+                    <td th:text="${jobs.jobid}"></td>
+                    <td th:text="${jobs.job_code}"></td>
+                    <td th:text="${jobs.job_title}"></td>
+                      <td th:text="${jobs.min_salary}"></td>
+                    <td th:text="${jobs.min_salary}"></td>
+             
+                  
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+
+
+<footer th:replace="admin/layout :: footer"></footer>
+</body>
+</html>

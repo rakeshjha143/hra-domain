@@ -3,18 +3,15 @@
  */
 package com.hra.domain.application.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.hra.domain.application.entity.Regions;
+import com.hra.domain.application.service.CountryService;
+import com.hra.domain.application.service.DepartmentsServices;
+import com.hra.domain.application.service.JobsServices;
+import com.hra.domain.application.service.LocationServices;
 import com.hra.domain.application.service.RegionServices;
 
 /**
@@ -27,13 +24,46 @@ public class RegionsController {
 	@Autowired
 	private RegionServices regionServices;
 	
+	@Autowired
+	private CountryService countryService;
+	
+	@Autowired
+	private LocationServices locationServices;
+	
+	@Autowired
+	private JobsServices jobsService;
+	
+	@Autowired
+	private DepartmentsServices deprtService;
+	
 	
     @GetMapping("/regions")
-    public String index(Model model) {
+    public String region(Model model) {
         model.addAttribute("regions", regionServices.getAllRegions());
-        return "admin/list";
+        return "admin/region";
     }
 	
+    @GetMapping("/country")
+    public String country(Model model) {
+        model.addAttribute("countrys", countryService.AllCountry());
+        return "admin/country";
+    }
 	
+    @GetMapping("/location")
+    public String location(Model model) {
+        model.addAttribute("locations", locationServices.allLocations());
+        return "admin/location";
+    }
+    
+    @GetMapping("/jobs")
+    public String typeOfjobs(Model model) {
+        model.addAttribute("jobslist", jobsService.getAllJobsList());
+        return "admin/jobs";
+    }
+    @GetMapping("/departments")
+    public String listOfDepartments(Model model) {
+        model.addAttribute("departmentslist", deprtService.getAllDepartments());
+        return "admin/departments";
+    }
 
 }

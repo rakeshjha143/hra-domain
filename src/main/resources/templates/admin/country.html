@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
+<body>
+<nav th:replace="admin/layout :: header"></nav>
+
+  <th:block th:if="${#lists.isEmpty(countrys)}">
+        <h3>No employee</h3>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(countrys)}">
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th>Country ID</th>
+                    <th>Country Code</th>
+                    <th>Country Name</th>
+                    <th>Region Name</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="country : ${countrys}">
+                    <td th:text="${country.country_id}"></td>
+                    <td th:text="${country.country_code}"></td>
+                    <td th:text="${country.country_name}"></td>
+                    <td th:text="${country.Regions.regions_name}"></td>
+               
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+
+<footer th:replace="admin/layout :: footer"></footer>
+
+</body>
+</html>

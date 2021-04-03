@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/layout :: head"></head>
+<body>
+<nav th:replace="admin/layout :: header"></nav>
+
+  <th:block th:if="${#lists.isEmpty(departmentslist)}">
+        <h3>No employee</h3>
+    </th:block>
+
+    <th:block th:unless="${#lists.isEmpty(departmentslist)}">
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <thead>
+                
+                <tr>
+                    <th>DEPARTMENT ID</th>
+                    <th>DEPARTMENT NAME</th>
+                    <th>MANAGER DETAILS</th>
+                    <th>LOCATION DETAILS</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="department : ${departmentslist}">
+                    <td th:text="${department.departments_id}"></td>
+                    <td th:text="${department.departments_name}"></td>
+                    <td th:text="${department.manager_emp}"></td>
+                    <td th:text="${department.locations.country.country_name}"></td>
+                    
+                    
+                
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+
+<footer th:replace="admin/layout :: footer"></footer>
+
+</body>
+</html>
